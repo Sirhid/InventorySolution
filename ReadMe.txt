@@ -1,1 +1,1 @@
-Place your web application Project in this folder
+Place your web projects in the WebUI Folder
