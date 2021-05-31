@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{56842932
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.InventoryManager", "HRIS\HRIS.InventoryManager\HRIS.InventoryManager.csproj", "{5AAE6456-DEF6-403E-B358-FA31687ED432}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{524A638D-4173-4DB6-BE27-1F0787CF4F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{524A638D-4173-4DB6-BE27-1F0787CF4F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{524A638D-4173-4DB6-BE27-1F0787CF4F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AAE6456-DEF6-403E-B358-FA31687ED432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AAE6456-DEF6-403E-B358-FA31687ED432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AAE6456-DEF6-403E-B358-FA31687ED432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AAE6456-DEF6-403E-B358-FA31687ED432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{BDBF34BA-E2D5-4994-B23C-DC36B78B2FF7} = {4DB466FB-528B-4C58-B36E-C14032EAEDA2}
 		{524A638D-4173-4DB6-BE27-1F0787CF4F2B} = {4DB466FB-528B-4C58-B36E-C14032EAEDA2}
 		{56842932-3EDD-4E52-BD70-C53ADD71806D} = {196F2714-010C-479C-AAC5-1485906EC1E7}
+		{5AAE6456-DEF6-403E-B358-FA31687ED432} = {56842932-3EDD-4E52-BD70-C53ADD71806D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB88FA4A-F8F3-4D68-BC8F-CF6542B2B9F6}
