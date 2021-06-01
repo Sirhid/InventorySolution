@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HRIS.Application\HRIS.Application.csproj" />
     <ProjectReference Include="..\HRIS.Domain\HRIS.Domain.csproj" />
+    <ProjectReference Include="..\HRIS.Infrastructure.Identity\HRIS.Infrastructure.Identity.csproj" />
   </ItemGroup>
 
 </Project>
