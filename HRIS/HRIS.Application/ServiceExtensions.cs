@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using HRIS.Application.Behaviours;
-using HRIS.Application.Features.Products.Commands.CreateProduct;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace HRIS.Application
 {

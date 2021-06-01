@@ -19,5 +19,8 @@
   <ItemGroup>
     <ProjectReference Include="..\HRIS.Domain\HRIS.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
+  </ItemGroup>
 
 </Project>

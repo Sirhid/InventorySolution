@@ -41,4 +41,8 @@
     <ProjectReference Include="..\HRIS.Infrastructure.Shared\HRIS.Infrastructure.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\v1\" />
+  </ItemGroup>
+
 </Project>

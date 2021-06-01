@@ -1,14 +1,9 @@
 ﻿using HRIS.Application.Interfaces;
-using HRIS.Application.Interfaces.Repositories;
 using HRIS.Infrastructure.Persistence.Contexts;
-using HRIS.Infrastructure.Persistence.Repositories;
 using HRIS.Infrastructure.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HRIS.Infrastructure.Persistence
 {
@@ -30,7 +25,6 @@ namespace HRIS.Infrastructure.Persistence
             }
             #region Repositories
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
-            services.AddTransient<IProductRepositoryAsync, ProductRepositoryAsync>();
             #endregion
         }
     }

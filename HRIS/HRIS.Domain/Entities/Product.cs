@@ -1,15 +1,29 @@
-﻿using HRIS.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace HRIS.Domain.Entities
 {
-    public class Product : AuditableBaseEntity
+    public class Product : BaseEntity
     {
+        public int ProductId { get; set; }
         public string Name { get; set; }
-        public string Barcode { get; set; }
         public string Description { get; set; }
-        public decimal Rate { get; set; }
+        public double CostPrice { get; set; }
+        public double SellingPrice { get; set; }
+        public double Quantity { get; set; }
+        public double Discount { get; set; }
+        public bool CanExpire { get; set; }
+        public DateTime ManufactureDate { get; set; }
+        public DateTime ExpiryDate { get; set; }
+        public int ProductVariationId { get; set; }
+        public string MeasureQuantity { get; set; }
+        public string Location { get; set; }
+        public int CriticalLevel { get; set; }
+        public int CategoryId { get; set; }
+        public int? SubCategoryId { get; set; }
+
+
+        public ProductVariation ProductVariation { get; set; }
+        public Category Category { get; set; }
+        public SubCategory SubCategory { get; set; }
     }
 }
