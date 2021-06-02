@@ -1,8 +1,10 @@
 using HRIS.Application;
 using HRIS.Application.Interfaces;
+using HRIS.Application.Interfaces.Repositories;
 using HRIS.Infrastructure.Identity;
 using HRIS.Infrastructure.Persistence;
 using HRIS.Infrastructure.Shared;
+using HRIS.Infrastructure.Shared.Services;
 using HRIS.WebApi.Extensions;
 using HRIS.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
@@ -22,15 +24,16 @@ namespace HRIS.WebApi
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ICategoryService, CategoryService>();
             services.AddApplicationLayer();
             services.AddIdentityInfrastructure(_config);
             services.AddPersistenceInfrastructure(_config);
+            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddSharedInfrastructure(_config);
             services.AddSwaggerExtension();
             services.AddControllers();
             services.AddApiVersioningExtension();
             services.AddHealthChecks();
-            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,6 +49,8 @@ namespace HRIS.WebApi
             }
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwaggerExtension();

@@ -1,9 +1,7 @@
-﻿using HRIS.Application.Exceptions;
-using HRIS.Application.Interfaces;
+﻿using HRIS.Application.Interfaces;
 using HRIS.Application.Wrappers;
 using HRIS.Domain.Settings;
 using HRIS.Infrastructure.Identity.Contexts;
-using HRIS.Infrastructure.Identity.Helpers;
 using HRIS.Infrastructure.Identity.Models;
 using HRIS.Infrastructure.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -15,9 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HRIS.Infrastructure.Identity
 {

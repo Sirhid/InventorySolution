@@ -1,9 +1,5 @@
 ﻿using HRIS.WebApi.Middlewares;
 using Microsoft.AspNetCore.Builder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HRIS.WebApi.Extensions
 {
@@ -14,7 +10,7 @@ namespace HRIS.WebApi.Extensions
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanArchitecture.HRIS.WebApi");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "HRIS.WebApi");
             });
         }
         public static void UseErrorHandlingMiddleware(this IApplicationBuilder app)

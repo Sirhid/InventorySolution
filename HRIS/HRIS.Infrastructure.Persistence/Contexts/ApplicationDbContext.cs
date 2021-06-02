@@ -1,8 +1,5 @@
 ﻿using HRIS.Application.Interfaces;
 using HRIS.Domain.Entities;
-using HRIS.Infrastructure.Identity.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
@@ -10,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Infrastructure.Persistence.Contexts
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         private readonly IDateTimeService _dateTime;
         private readonly IAuthenticatedUserService _authenticatedUser;
@@ -27,7 +24,8 @@ namespace HRIS.Infrastructure.Persistence.Contexts
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<CustomerReturn> CustomerReturn { get; set; }
         public virtual DbSet<CustomerVoucher> CustomerVoucher { get; set; }
-        public virtual DbSet<ProductVariation> ProductVariation { get; set; }
+        public virtual DbSet<ProductTypeVariation> ProductTypeVariation { get; set; }
+        public virtual DbSet<Expenditure> Expenditure { get; set; }
         public virtual DbSet<StorePurchase> StorePurchase { get; set; }
         public virtual DbSet<SubCategory> SubCategory { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
@@ -65,41 +63,7 @@ namespace HRIS.Infrastructure.Persistence.Contexts
                 property.SetColumnType("decimal(18,6)");
             }
             base.OnModelCreating(builder);
-            builder.HasDefaultSchema("Identity");
-            builder.Entity<ApplicationUser>(entity =>
-            {
-                entity.ToTable(name: "User");
-            });
 
-            builder.Entity<IdentityRole>(entity =>
-            {
-                entity.ToTable(name: "Role");
-            });
-            builder.Entity<IdentityUserRole<string>>(entity =>
-            {
-                entity.ToTable("UserRoles");
-            });
-
-            builder.Entity<IdentityUserClaim<string>>(entity =>
-            {
-                entity.ToTable("UserClaims");
-            });
-
-            builder.Entity<IdentityUserLogin<string>>(entity =>
-            {
-                entity.ToTable("UserLogins");
-            });
-
-            builder.Entity<IdentityRoleClaim<string>>(entity =>
-            {
-                entity.ToTable("RoleClaims");
-
-            });
-
-            builder.Entity<IdentityUserToken<string>>(entity =>
-            {
-                entity.ToTable("UserTokens");
-            });
         }
     }
 }

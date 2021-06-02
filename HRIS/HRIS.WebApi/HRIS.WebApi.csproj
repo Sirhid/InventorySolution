@@ -42,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\v1\" />
+    <DocFileItem Remove="HRIS.WebApi.xml" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace HRIS.Application.Wrappers
 {
@@ -8,6 +6,15 @@ namespace HRIS.Application.Wrappers
     {
         public Response()
         {
+
+        }
+        public Response(T Data, int StatusCode = 0, bool Succeeded = false, string Message = "", List<string> Errors = null)
+        {
+            Succeeded = this.Succeeded;
+            Message = this.Message;
+            Data = this.Data;
+            Errors = this.Errors;
+            StatusCode = this.StatusCode;
         }
         public Response(T data, string message = null)
         {
@@ -20,6 +27,8 @@ namespace HRIS.Application.Wrappers
             Succeeded = false;
             Message = message;
         }
+        public int StatusCode { get; set; }
+        public string ResponseCode { get; set; }
         public bool Succeeded { get; set; }
         public string Message { get; set; }
         public List<string> Errors { get; set; }
