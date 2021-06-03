@@ -4,14 +4,16 @@ using HRIS.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HRIS.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210603105056_InitialCreate3")]
+    partial class InitialCreate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,7 +278,7 @@ namespace HRIS.Infrastructure.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProductTypeVariationId")
+                    b.Property<int>("ProductTypeVariationId")
                         .HasColumnType("int");
 
                     b.Property<double>("Quantity")
@@ -632,7 +634,9 @@ namespace HRIS.Infrastructure.Persistence.Migrations
 
                     b.HasOne("HRIS.Domain.Entities.ProductTypeVariation", "ProductVariation")
                         .WithMany()
-                        .HasForeignKey("ProductTypeVariationId");
+                        .HasForeignKey("ProductTypeVariationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HRIS.Domain.Entities.SubCategory", "SubCategory")
                         .WithMany("Products")

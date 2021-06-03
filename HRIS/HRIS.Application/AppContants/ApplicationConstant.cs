@@ -12,6 +12,8 @@
 
         public static string Sp_Category = "Sp_Category";
         public static string Sp_SubCategory = "Sp_SubCategory";
+        public static string Sp_Supplier = "Sp_Supplier";
+        public static string Sp_Customer = "Sp_Customer";
 
     }
 }

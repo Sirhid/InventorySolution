@@ -16,6 +16,8 @@ namespace HRIS.Infrastructure.Shared
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ISubCategoryService, SubSubCategoryService>();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ISupplierService, SupplierService>();
         }
     }
 }
