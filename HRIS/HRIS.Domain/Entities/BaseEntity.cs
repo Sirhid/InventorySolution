@@ -4,12 +4,12 @@ namespace HRIS.Domain.Entities
 {
     public class BaseEntity
     {
-        public DateTime DateCreated { get; set; }
+        public DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? UpdatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public bool IsDeleted { get; set; }
-        public DateTime? DateDeleted { get; set; }
+        public DateTime? DeletedOn { get; set; }
         public string DeletedBy { get; set; }
     }
 

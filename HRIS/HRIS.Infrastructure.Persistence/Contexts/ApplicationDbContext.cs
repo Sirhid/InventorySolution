@@ -42,11 +42,11 @@ namespace HRIS.Infrastructure.Persistence.Contexts
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.DateCreated = _dateTime.NowUtc;
+                        entry.Entity.CreatedOn = _dateTime.NowUtc;
                         entry.Entity.CreatedBy = _authenticatedUser.UserId;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.DateUpdated = _dateTime.NowUtc;
+                        entry.Entity.UpdatedOn = _dateTime.NowUtc;
                         entry.Entity.UpdatedBy = _authenticatedUser.UserId;
                         break;
                 }
