@@ -13,36 +13,39 @@ namespace HRIS.WebApi.Controllers.v1
     [Authorize]
     public class ProductTypeVariationController : BaseApiController
     {
-        private readonly IProductTypeVariationService _ProductTypeVariationService;
+        private readonly IProductTypeVariationService _productTypeVariationService;
 
         public ProductTypeVariationController(IProductTypeVariationService ProductTypeVariationService)
         {
-            _ProductTypeVariationService = ProductTypeVariationService;
+            _productTypeVariationService = ProductTypeVariationService;
         }
         [HttpPost]
         [ProducesResponseType(typeof(Response<string>), 200)]
         public IActionResult Post([FromBody] CreateProductTypeVariationDTO request)
         {
-            var response = _ProductTypeVariationService.CreateProductTypeVariation(request);
+            var response = _productTypeVariationService.CreateProductTypeVariation(request);
             if (response > 0)
                 return Ok(ResponseHelper.SuccessMessage("ProductTypeVariation was created successfully"));
-            return Ok(ResponseHelper.FailureMessage("Failure creating ProductTypeVariation"));
+            else if (response == 0)
+                return Ok(ResponseHelper.FailureMessage("Failure creating ProductTypeVariation"));
+            return Ok(ResponseHelper.AlreadyExistMessage("Product type Variation already exist"));
         }
         [HttpPut]
         [ProducesResponseType(typeof(Response<string>), 200)]
         public IActionResult Put([FromBody] UpdateProductTypeVariationDTO request)
         {
-            var response = _ProductTypeVariationService.UpdateProductTypeVariation(request);
+            var response = _productTypeVariationService.UpdateProductTypeVariation(request);
             if (response > 0)
                 return Ok(ResponseHelper.SuccessMessage("ProductTypeVariation was updated successfully"));
             return Ok(ResponseHelper.FailureMessage("Failure updating ProductTypeVariation"));
+
         }
 
         [HttpDelete]
         [ProducesResponseType(typeof(Response<string>), 200)]
         public IActionResult Delete([FromBody] DeleteProductTypeVariationDTO request)
         {
-            var response = _ProductTypeVariationService.DeleteProductTypeVariation(request);
+            var response = _productTypeVariationService.DeleteProductTypeVariation(request);
             if (response > 0)
                 return Ok(ResponseHelper.SuccessMessage("ProductTypeVariation was deleted successfully"));
             return Ok(ResponseHelper.FailureMessage("Failure deleting ProductTypeVariation"));
@@ -51,7 +54,7 @@ namespace HRIS.WebApi.Controllers.v1
         [ProducesResponseType(typeof(Response<List<ProductTypeVariationDTO>>), 200)]
         public IActionResult Get()
         {
-            var response = _ProductTypeVariationService.GetAllProductTypeVariation();
+            var response = _productTypeVariationService.GetAllProductTypeVariation();
             if (response != null)
                 return Ok(new Response<List<ProductTypeVariationDTO>>
                 {
@@ -67,7 +70,7 @@ namespace HRIS.WebApi.Controllers.v1
         [ProducesResponseType(typeof(Response<List<ProductTypeVariationDTO>>), 200)]
         public IActionResult GetById(int ProductTypeVariationId)
         {
-            var response = _ProductTypeVariationService.GetProductTypeVariationById(ProductTypeVariationId);
+            var response = _productTypeVariationService.GetProductTypeVariationById(ProductTypeVariationId);
             if (response != null)
                 return Ok(new Response<ProductTypeVariationDTO>
                 {
