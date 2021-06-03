@@ -52,7 +52,7 @@ namespace HRIS.Infrastructure.Shared.Services
             {
                 var param = new DynamicParameters();
                 param.Add("Status", Status.DELETE);
-                param.Add("CategoryId", model.SubCategoryId);
+                param.Add("SubCategoryId", model.SubCategoryId);
                 param.Add("DeletedBy", _authenticatedUser.UserId);
                 var response = _dapper.Execute(ApplicationConstant.Sp_SubCategory, param, CommandType.StoredProcedure);
                 return response;
