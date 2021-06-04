@@ -11,7 +11,7 @@ namespace HRIS.WebApi.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [Authorize]
     public class VatController : ControllerBase
     {
         private readonly IVatService vatService;
