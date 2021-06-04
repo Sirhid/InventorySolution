@@ -1,131 +1,130 @@
 ﻿using Dapper;
 using HRIS.Application.AppContants;
 using HRIS.Application.DapperServices;
-using HRIS.Application.DTOs.Category;
+using HRIS.Application.DTOs.Customer;
 using HRIS.Application.Enums;
 using HRIS.Application.Interfaces;
 using HRIS.Application.Interfaces.Repositories;
-using HRIS.Domain.Common;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Data;
 
+
 namespace HRIS.Infrastructure.Shared.Services
 {
-    public class CategoryService : ICategoryService
+    public class CustomerService : ICustomerService
     {
-        private readonly ILogger<CategoryService> _logger;
+        private readonly ILogger<CustomerService> _logger;
         private readonly IAuthenticatedUserService _authenticatedUser;
-        //  private readonly IOptions<ConnectionStrings> _connectionString;
-        private string constring;
-        IOptions<ConnectionStrings> myconnectionString;
         private readonly IDapper _dapper;
 
-        public CategoryService(ILogger<CategoryService> logger,
+        public CustomerService(ILogger<CustomerService> logger,
                                IAuthenticatedUserService authenticatedUser,
-                               IOptions<ConnectionStrings> connectionString,
                                IDapper dapper)
         {
             _logger = logger;
             _authenticatedUser = authenticatedUser;
-            myconnectionString = connectionString;
             _dapper = dapper;
-            constring = myconnectionString.Value.DefaultConnection;
         }
 
 
-        public int CreateCategory(CreateCategoryDTO model)
+        public int CreateCustomer(CreateCustomerDTO model)
         {
             try
             {
                 var param = new DynamicParameters();
                 param.Add("Status", Status.INSERT);
-                param.Add("Description", model.Description);
+                param.Add("FullName", model.FullName);
+                param.Add("Email", model.Email);
+                param.Add("Phone", model.Phone);
+                param.Add("Address", model.Address);
                 param.Add("CreatedBy", _authenticatedUser.UserId);
-                var response = _dapper.Execute(ApplicationConstant.Sp_Category, param, CommandType.StoredProcedure);
+                var response = _dapper.Execute(ApplicationConstant.Sp_Customer, param, CommandType.StoredProcedure);
                 return response;
 
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while saving category");
+                _logger.LogError(ex, "Error occured while saving Customer");
                 return 0;
             }
         }
 
-        public int DeleteCategory(DeleteCategoryDTO model)
+        public int DeleteCustomer(DeleteCustomerDTO model)
         {
             try
             {
                 var param = new DynamicParameters();
                 param.Add("Status", Status.DELETE);
-                param.Add("CategoryId", model.CategoryId);
+                param.Add("CustomerId", model.CustomerId);
                 param.Add("DeletedBy", _authenticatedUser.UserId);
 
-                var response = _dapper.Execute(ApplicationConstant.Sp_Category, param, CommandType.StoredProcedure);
+                var response = _dapper.Execute(ApplicationConstant.Sp_Customer, param, CommandType.StoredProcedure);
                 return response;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while deleting category");
+                _logger.LogError(ex, "Error occured while deleting Customer");
                 return 0;
             }
         }
 
-        public List<CategoryDTO> GetAllCategory()
+        public List<CustomerDTO> GetAllCustomer()
         {
             try
             {
 
                 var param = new DynamicParameters();
                 param.Add("Status", Status.GETALL);
-                var response = _dapper.GetAll<CategoryDTO>(ApplicationConstant.Sp_Category, param, commandType: CommandType.StoredProcedure);
+                var response = _dapper.GetAll<CustomerDTO>(ApplicationConstant.Sp_Customer, param, commandType: CommandType.StoredProcedure);
                 return response;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while updating  category");
+                _logger.LogError(ex, "Error occured while updating a Customer");
                 return null;
             }
         }
 
-        public CategoryDTO GetCategoryById(int categoryId)
+        public CustomerDTO GetCustomerById(int CustomerId)
         {
             try
             {
 
                 var param = new DynamicParameters();
                 param.Add("Status", Status.GETBYID);
-                param.Add("CategoryId", categoryId);
-                var response = _dapper.Get<CategoryDTO>(ApplicationConstant.Sp_Category, param, commandType: CommandType.StoredProcedure);
+                param.Add("CustomerId", CustomerId);
+                var response = _dapper.Get<CustomerDTO>(ApplicationConstant.Sp_Customer, param, commandType: CommandType.StoredProcedure);
                 return response;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while updating a category");
-                return new CategoryDTO();
+                _logger.LogError(ex, "Error occured while updating a Customer");
+                return new CustomerDTO();
             }
         }
 
-        public int UpdateCategory(UpdateCategoryDTO model)
+        public int UpdateCustomer(UpdateCustomerDTO model)
         {
             try
             {
                 var param = new DynamicParameters();
                 param.Add("Status", Status.UPDATE);
-                param.Add("CategoryId", model.CategoryId);
-                param.Add("Description", model.Description);
+                param.Add("CustomerId", model.CustomerId);
+                param.Add("FullName", model.FullName);
+                param.Add("Email", model.Email);
+                param.Add("Phone", model.Phone);
+                param.Add("Address", model.Address);
                 param.Add("UpdatedBy", _authenticatedUser.UserId);
 
-                var response = _dapper.Execute(ApplicationConstant.Sp_Category, param, CommandType.StoredProcedure);
+                var response = _dapper.Execute(ApplicationConstant.Sp_Customer, param, CommandType.StoredProcedure);
                 return response;
 
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while updating a category");
+                _logger.LogError(ex, "Error occured while updating a Customer");
                 return 0;
             }
         }

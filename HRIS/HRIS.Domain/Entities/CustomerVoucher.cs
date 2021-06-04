@@ -1,6 +1,6 @@
 ﻿namespace HRIS.Domain.Entities
 {
-    public class CustomerVoucher
+    public class CustomerVoucher : BaseEntity
     {
         public int CustomerVoucherId { get; set; }
         public int CustomerId { get; set; }

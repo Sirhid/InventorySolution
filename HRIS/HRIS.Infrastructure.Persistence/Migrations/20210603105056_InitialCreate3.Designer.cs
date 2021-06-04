@@ -4,14 +4,16 @@ using HRIS.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HRIS.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210603105056_InitialCreate3")]
+    partial class InitialCreate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,29 +163,8 @@ namespace HRIS.Infrastructure.Persistence.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("float");
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("VoucherId")
                         .HasColumnType("int");
@@ -297,7 +278,7 @@ namespace HRIS.Infrastructure.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProductTypeVariationId")
+                    b.Property<int>("ProductTypeVariationId")
                         .HasColumnType("int");
 
                     b.Property<double>("Quantity")
@@ -527,9 +508,6 @@ namespace HRIS.Infrastructure.Persistence.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -537,11 +515,6 @@ namespace HRIS.Infrastructure.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<double>("Value")
-
-                    b.Property<bool>("isDisable")
-                        .HasColumnType("bit");
-
-                    b.Property<double>("percentage")
                         .HasColumnType("float");
 
                     b.HasKey("VATId");
@@ -661,7 +634,9 @@ namespace HRIS.Infrastructure.Persistence.Migrations
 
                     b.HasOne("HRIS.Domain.Entities.ProductTypeVariation", "ProductVariation")
                         .WithMany()
-                        .HasForeignKey("ProductTypeVariationId");
+                        .HasForeignKey("ProductTypeVariationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HRIS.Domain.Entities.SubCategory", "SubCategory")
                         .WithMany("Products")
