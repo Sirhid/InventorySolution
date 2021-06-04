@@ -11,6 +11,9 @@
 
 
         public static string Sp_Category = "Sp_Category";
+        public static string Sp_Product = "Sp_Product";
+        public static string Sp_Expenditure = "Sp_Expenditure";
+        public static string Sp_StoreSetup = "Sp_StoreSetup";
         public static string Sp_SubCategory = "Sp_SubCategory";
         public static string Sp_ProductTypeVariation = "Sp_ProductTypeVariation";
         public static string Sp_CustomerVoucher = "Sp_CustomerVoucher";
