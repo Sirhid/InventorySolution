@@ -20,6 +20,7 @@ namespace HRIS.WebApi.Controllers.v1
         {
             _categoryService = categoryService;
         }
+
         [HttpPost]
         [ProducesResponseType(typeof(Response<string>), 200)]
         public IActionResult Post([FromBody] CreateCategoryDTO request)
@@ -27,7 +28,9 @@ namespace HRIS.WebApi.Controllers.v1
             var response = _categoryService.CreateCategory(request);
             if (response > 0)
                 return Ok(ResponseHelper.SuccessMessage("Category was created successfully"));
-            return Ok(ResponseHelper.FailureMessage("Failure creating category"));
+            else if (response == 0)
+                return Ok(ResponseHelper.FailureMessage("Failure creating category"));
+            return Ok(ResponseHelper.AlreadyExistMessage("Category exists"));
         }
         [HttpPut]
         [ProducesResponseType(typeof(Response<string>), 200)]
@@ -48,6 +51,7 @@ namespace HRIS.WebApi.Controllers.v1
                 return Ok(ResponseHelper.SuccessMessage("Category was deleted successfully"));
             return Ok(ResponseHelper.FailureMessage("Failure deleting category"));
         }
+
         [HttpGet]
         [ProducesResponseType(typeof(Response<List<CategoryDTO>>), 200)]
         public IActionResult Get()
@@ -64,6 +68,7 @@ namespace HRIS.WebApi.Controllers.v1
                 });
             return Ok(ResponseHelper.FailureMessage("Failure retrieving category"));
         }
+
         [HttpGet("categoryId")]
         [ProducesResponseType(typeof(Response<List<CategoryDTO>>), 200)]
         public IActionResult GetById(int categoryId)
