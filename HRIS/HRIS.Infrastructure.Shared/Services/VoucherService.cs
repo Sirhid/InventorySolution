@@ -44,8 +44,8 @@ namespace HRIS.Infrastructure.Shared.Services
                 param.Add("Status", Status.INSERT);
                 param.Add("Description", model.Description);
                 param.Add("amount", model.Amount);
-                param.Add("ExpireDate", model.ExpiryDate);
-                param.Add("CreatedBy","Yusuf");  // _authenticatedUser.UserId
+                param.Add("ExpiredDate", model.ExpiryDate);
+                param.Add("CreatedBy", _authenticatedUser.UserId);
                 var response = _dapper.Execute(ApplicationConstant.SP_Voucher, param, CommandType.StoredProcedure);
                 return response;
 
@@ -67,7 +67,7 @@ namespace HRIS.Infrastructure.Shared.Services
                 param.Add("Description", model.Description);
                 param.Add("amount", model.Amount);
                 param.Add("ExpiredDate", model.ExpiryDate);
-                param.Add("UpdatedBy","Yusuf");
+                param.Add("UpdatedBy", _authenticatedUser.UserId);
 
                 var response = _dapper.Execute(ApplicationConstant.SP_Voucher, param, CommandType.StoredProcedure);
                 return response;
@@ -86,7 +86,7 @@ namespace HRIS.Infrastructure.Shared.Services
                 var param = new DynamicParameters();
                 param.Add("Status", Status.DELETE);
                 param.Add("VoucherID", model.VoucherId);
-                param.Add("DeletedBy", "Yusuf");
+                param.Add("DeletedBy", _authenticatedUser.UserId);
 
                 var response = _dapper.Execute(ApplicationConstant.SP_Voucher, param, CommandType.StoredProcedure);
                 return response;
