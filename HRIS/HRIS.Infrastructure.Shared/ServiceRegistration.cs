@@ -18,6 +18,8 @@ namespace HRIS.Infrastructure.Shared
             services.AddTransient<ISubCategoryService, SubSubCategoryService>();
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ISupplierService, SupplierService>();
+            services.AddScoped<IVatService, VatService>();
+            services.AddScoped<IVoucherService, VoucherService>();
         }
     }
 }
