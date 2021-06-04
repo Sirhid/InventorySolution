@@ -20,6 +20,7 @@ namespace HRIS.WebApi.Controllers.v1
         {
             _categoryService = categoryService;
         }
+
         [HttpPost]
         [ProducesResponseType(typeof(Response<string>), 200)]
         public IActionResult Post([FromBody] CreateCategoryDTO request)
@@ -29,6 +30,7 @@ namespace HRIS.WebApi.Controllers.v1
                 return Ok(ResponseHelper.SuccessMessage("Category was created successfully"));
             return Ok(ResponseHelper.FailureMessage("Failure creating category"));
         }
+
         [HttpPut]
         [ProducesResponseType(typeof(Response<string>), 200)]
         public IActionResult Put([FromBody] UpdateCategoryDTO request)
