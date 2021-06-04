@@ -43,7 +43,7 @@ namespace HRIS.Infrastructure.Shared.Services
                 param.Add("Status", Status.INSERT);
                 param.Add("Description", model.Name);
                 param.Add("Percentage", model.percentage);
-                param.Add("CreatedBy", _authenticatedUser.UserId);
+                param.Add("CreatedBy", "Yusuf"); //_authenticatedUser.UserId
                 var response = _dapper.Execute(ApplicationConstant.SP_vat, param, CommandType.StoredProcedure);
                 return response;
 
@@ -62,7 +62,7 @@ namespace HRIS.Infrastructure.Shared.Services
                 var param = new DynamicParameters();
                 param.Add("Status", Status.DELETE);
                 param.Add("VatID", model.VATId);
-                param.Add("DeletedBy", _authenticatedUser.UserId);
+                param.Add("DeletedBy", "Yusuf");
 
                 var response = _dapper.Execute(ApplicationConstant.SP_vat, param, CommandType.StoredProcedure);
                 return response;
@@ -117,7 +117,7 @@ namespace HRIS.Infrastructure.Shared.Services
                 param.Add("CategoryId", model.VATId);
                 param.Add("Description", model.Name);
                 param.Add("percentage", model.percentage);
-                param.Add("UpdatedBy", _authenticatedUser.UserId);
+                param.Add("UpdatedBy", "Yusuf");
 
                 var response = _dapper.Execute(ApplicationConstant.SP_vat, param, CommandType.StoredProcedure);
                 return response;
