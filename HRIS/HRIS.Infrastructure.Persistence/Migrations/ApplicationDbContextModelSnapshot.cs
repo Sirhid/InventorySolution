@@ -653,7 +653,7 @@ namespace HRIS.Infrastructure.Persistence.Migrations
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("Value")
+                    b.Property<double>("Value");
 
                     b.Property<bool>("isDisable")
                         .HasColumnType("bit");
