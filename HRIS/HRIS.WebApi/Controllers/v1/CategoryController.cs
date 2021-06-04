@@ -26,7 +26,7 @@ namespace HRIS.WebApi.Controllers.v1
         {
             var response = _categoryService.CreateCategory(request);
             if (response > 0)
-                return Ok(ResponseHelper.SuccessMessage("Category was created successfully"));
+                return Ok(ResponseHelper.SuccessMessage("Category was created successfully."));
             return Ok(ResponseHelper.FailureMessage("Failure creating category"));
         }
         [HttpPut]
