@@ -14,7 +14,7 @@ namespace HRIS.Domain.Entities
         public bool CanExpire { get; set; }
         public DateTime ManufactureDate { get; set; }
         public DateTime ExpiryDate { get; set; }
-        public int ProductVariationId { get; set; }
+        public int ProductTypeVariationId { get; set; }
         public string MeasureQuantity { get; set; }
         public string Location { get; set; }
         public int CriticalLevel { get; set; }
@@ -22,7 +22,7 @@ namespace HRIS.Domain.Entities
         public int? SubCategoryId { get; set; }
 
 
-        public ProductVariation ProductVariation { get; set; }
+        public ProductTypeVariation ProductVariation { get; set; }
         public Category Category { get; set; }
         public SubCategory SubCategory { get; set; }
     }

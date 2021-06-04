@@ -1,4 +1,5 @@
 ﻿using HRIS.Application.Interfaces;
+using HRIS.Application.Interfaces.Repositories;
 using HRIS.Domain.Settings;
 using HRIS.Infrastructure.Shared.Services;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,8 @@ namespace HRIS.Infrastructure.Shared
             services.Configure<MailSettings>(_config.GetSection("MailSettings"));
             services.AddTransient<IDateTimeService, DateTimeService>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<ISubCategoryService, SubSubCategoryService>();
         }
     }
 }

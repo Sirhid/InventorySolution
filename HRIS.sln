@@ -7,28 +7,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{196F27
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{930BA702-C5E0-433F-8705-8EF40D0C5AA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.WebApi", "HRIS\HRIS.WebApi\HRIS.WebApi.csproj", "{A33EF48C-ACE8-468B-BBF1-7B1382813B6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.WebApi", "HRIS\HRIS.WebApi\HRIS.WebApi.csproj", "{A33EF48C-ACE8-468B-BBF1-7B1382813B6D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A604C8F0-FD89-4EB8-9407-AF7C971D04AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.Application", "HRIS\HRIS.Application\HRIS.Application.csproj", "{F71512A9-9AAA-4DFA-A26E-BFCB04C4248A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Application", "HRIS\HRIS.Application\HRIS.Application.csproj", "{F71512A9-9AAA-4DFA-A26E-BFCB04C4248A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.Domain", "HRIS\HRIS.Domain\HRIS.Domain.csproj", "{0AB7E9B1-FB70-4676-B35E-A2607E3B9BE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Domain", "HRIS\HRIS.Domain\HRIS.Domain.csproj", "{0AB7E9B1-FB70-4676-B35E-A2607E3B9BE1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{4DB466FB-528B-4C58-B36E-C14032EAEDA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.Infrastructure.Identity", "HRIS\HRIS.Infrastructure.Identity\HRIS.Infrastructure.Identity.csproj", "{D7CA1660-E4E0-4AA4-8626-6200650E52D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Infrastructure.Identity", "HRIS\HRIS.Infrastructure.Identity\HRIS.Infrastructure.Identity.csproj", "{D7CA1660-E4E0-4AA4-8626-6200650E52D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.Infrastructure.Persistence", "HRIS\HRIS.Infrastructure.Persistence\HRIS.Infrastructure.Persistence.csproj", "{BDBF34BA-E2D5-4994-B23C-DC36B78B2FF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Infrastructure.Persistence", "HRIS\HRIS.Infrastructure.Persistence\HRIS.Infrastructure.Persistence.csproj", "{BDBF34BA-E2D5-4994-B23C-DC36B78B2FF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.Infrastructure.Shared", "HRIS\HRIS.Infrastructure.Shared\HRIS.Infrastructure.Shared.csproj", "{524A638D-4173-4DB6-BE27-1F0787CF4F2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Infrastructure.Shared", "HRIS\HRIS.Infrastructure.Shared\HRIS.Infrastructure.Shared.csproj", "{524A638D-4173-4DB6-BE27-1F0787CF4F2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{56842932-3EDD-4E52-BD70-C53ADD71806D}"
 	ProjectSection(SolutionItems) = preProject
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.InventoryManager", "HRIS\HRIS.InventoryManager\HRIS.InventoryManager.csproj", "{5AAE6456-DEF6-403E-B358-FA31687ED432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.InventoryManager", "HRIS\HRIS.InventoryManager\HRIS.InventoryManager.csproj", "{5AAE6456-DEF6-403E-B358-FA31687ED432}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,5 @@
 ﻿using HRIS.Application.Interfaces;
+using HRIS.Domain.Common;
 using HRIS.Infrastructure.Persistence.Contexts;
 using HRIS.Infrastructure.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,8 @@ namespace HRIS.Infrastructure.Persistence
             }
             else
             {
+                // services.Configure<ReadConnectionString>(Configuration.GetSection("DefaultConnection"));
+                services.Configure<ConnectionStrings>(configuration.GetSection("ConnectionStrings"));
                 services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(
                    configuration.GetConnectionString("DefaultConnection"),
