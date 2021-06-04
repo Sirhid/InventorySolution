@@ -36,7 +36,7 @@ namespace HRIS.WebApi.Controllers.v1
         {
             var response = _productTypeVariationService.UpdateProductTypeVariation(request);
             if (response > 0)
-                return Ok(ResponseHelper.SuccessMessage("ProductTypeVariation was updated successfully"));
+                return Ok(ResponseHelper.SuccessMessage("Product Type Variation was updated successfully"));
             return Ok(ResponseHelper.FailureMessage("Failure updating ProductTypeVariation"));
 
         }
