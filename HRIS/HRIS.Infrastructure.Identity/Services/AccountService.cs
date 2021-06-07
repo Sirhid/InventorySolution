@@ -1,5 +1,8 @@
-﻿using HRIS.Application.DTOs.Account;
+﻿using HRIS.Application.ApiResponseHelpers;
+using HRIS.Application.AppContants;
+using HRIS.Application.DTOs.Account;
 using HRIS.Application.DTOs.Email;
+using HRIS.Application.DTOs.Expenditure;
 using HRIS.Application.Enums;
 using HRIS.Application.Exceptions;
 using HRIS.Application.Interfaces;
@@ -218,6 +221,10 @@ namespace HRIS.Infrastructure.Identity.Services
             };
             await _emailService.SendAsync(emailRequest);
         }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(Response<List<MenuRole>>), 200)]
+       
 
         public async Task<Response<string>> ResetPassword(ResetPasswordRequest model)
         {

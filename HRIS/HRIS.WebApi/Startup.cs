@@ -29,6 +29,7 @@ namespace HRIS.WebApi
             services.AddTransient<IProductsRepository, ProductsRepository>();
             services.AddTransient<IExpenditureRepository, ExpenditureRepository>();
             services.AddTransient<IStoreSetupRepository, StoreSetupRepository>();
+            services.AddTransient<IMenuRepository, MenuRepository>();
             services.AddApplicationLayer();
             services.AddIdentityInfrastructure(_config);
             services.AddPersistenceInfrastructure(_config);
