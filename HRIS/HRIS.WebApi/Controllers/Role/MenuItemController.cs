@@ -32,7 +32,7 @@ namespace HRIS.WebApi.Controllers.Role
                 return Ok(new Response<List<MenuRole>>
                 {
                     Data = response,
-                    Message = "Menulist was retrieved successfully",
+                    Message = "Menulist was retrieved successfully ",
                     ResponseCode = ApplicationConstant.SuccessResponseCode,
                     StatusCode = ApplicationConstant.SuccessStatusCode,
                     Succeeded = true
