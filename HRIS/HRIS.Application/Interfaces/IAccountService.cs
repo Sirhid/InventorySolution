@@ -1,9 +1,5 @@
 ﻿using HRIS.Application.DTOs.Account;
 using HRIS.Application.Wrappers;
-using Microsoft.Extensions.Primitives;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HRIS.Application.Interfaces
@@ -15,5 +11,6 @@ namespace HRIS.Application.Interfaces
         Task<Response<string>> ConfirmEmailAsync(string userId, string code);
         Task ForgotPassword(ForgotPasswordRequest model, string origin);
         Task<Response<string>> ResetPassword(ResetPasswordRequest model);
+        Task<Response<string>> Logout();
     }
 }

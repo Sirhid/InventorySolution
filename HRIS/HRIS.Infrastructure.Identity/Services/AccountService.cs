@@ -11,17 +11,13 @@ using HRIS.Domain.Settings;
 using HRIS.Infrastructure.Identity.Helpers;
 using HRIS.Infrastructure.Identity.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
-using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Net.Cache;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -240,6 +236,13 @@ namespace HRIS.Infrastructure.Identity.Services
                 throw new ApiException($"Error occured while reseting the password.");
             }
         }
-    }
 
+        public async Task<Response<string>> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return new Response<string> { Data = "User logged out Successfully", Message = "User logged out Successfully", Succeeded = true };
+        }
+    }
 }
+
+

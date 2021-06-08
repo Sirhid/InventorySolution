@@ -1,0 +1,158 @@
+﻿@*@inject Amis.Web.Helpers.MenuSetup Menus
+$(document).ready(function() {
+        var success = @((TempData["SuccessMessage"] != null).ToString().ToLower());
+
+        if (success == true) {
+            toastr.options = {
+                "closeButton": true,
+                "positionClass": "toast-bottom-right"
+            }
+            toastr.success("Success!  You're now registered for Lose A Ton!");
+        }
+    });
+
+@{
+    var retrieveUserId = string.Empty;
+    if (TempData.ContainsKey("retrieveUserId"))
+    {
+        retrieveUserId = TempData["retrieveUserId"].ToString();
+
+        @if (TempData["retrieveUserId"] != null)
+        {
+            TempData.Keep();
+            //var retrieveUserId = TempData["retrieveUserId"].ToString();
+            var retrieveUserIds = retrieveUserId;
+            var menuSetupResults = Menus.GetMenuSetupById(retrieveUserIds);
+
+
+            //if (Menus.GetMenuSetupById(retrieveUserId).Any())
+
+            if (menuSetupResults == null)
+            {
+                //Display Dashboard with the links as the user is yet to assign a user access
+            }
+            else
+            {
+                foreach (var menuNames in menuSetupResults.Where(n => n.ParentMenuId == "*"))
+                {
+                    <div id="left-sidebar" class="sidebar">
+                        <div class="sidebar_icon">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a class="nav-link" href="page-search-results.html"><i class="fa fa-search"></i></a></li>
+                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Home-icon"><i class="fa fa-dashboard"></i></a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Envelope-icon"><i class="fa fa-envelope"></i></a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Components-icon"><i class="icon-diamond"></i></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#Profile-icon"><i class="fa fa-user"></i></a>
+                                        <a class="nav-link" data-toggle="tab" href="#Setting-icon"><i class="fa fa-cog"></i></a>
+                                    </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="sidebar_list">
+                            <div class="tab-content" id="main-menu">
+                                <div class="tab-pane active" id="Home-icon">
+                                    <nav class="sidebar-nav sidebar-scroll">
+                                        <ul class="metismenu">
+                                            <li><a asp-page="/Index"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
+                                            <li class="header">@menuNames.SectionName</li>
+                                            @foreach (var subMenu in menuSetupResults.Where(n => n.ParentMenuId != "*"))
+                                            {
+                                                @if (subMenu.MenuFileName == null && subMenu.ParentMenuId == menuNames.MenuId && menuNames.IsSubMenu == true)
+                                                {
+                                                    <li>
+                                                        <a href="#Pages" class="@menuNames.ImgClass"><i class="@menuNames.SectionImgClass"></i><span>@menuNames.MenuName</span></a>
+                                                        <ul>
+                                                            <li><a asp-area="" asp-page=@subMenu.MenuUrl>@subMenu.MenuName</a></li>
+                                                        </ul>
+                                                    </li>
+
+                                                }
+                                                else if (subMenu.MenuFileName == null && subMenu.ParentMenuId == menuNames.MenuId && menuNames.IsSubMenu == false)
+                                                {
+                                                    <li><a asp-page=@subMenu.MenuUrl><i class="@subMenu.ImgClass"></i><span>@subMenu.MenuName</span></a></li>
+                                                }
+                                                else if (subMenu.MenuFileName != null && subMenu.ParentMenuId == menuNames.MenuId)
+                                                {
+                                                    <li><a asp-area="" asp-controller="@subMenu.MenuUrl" asp-action=@subMenu.MenuFileName> @subMenu.MenuName</a></li>
+                                                }
+                                            }
+
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <partial name="AmisFiles/_RedirectToLoginScripts" />
+        }
+    }
+    else
+    {
+        <partial name="AmisFiles/_RedirectToLoginScripts" />
+    }
+}*@
+
+
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span>
+                        <img alt="image" class="img-circle" src="~/img/profile_small.jpg" />
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">David Williams</strong>
+                            </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="mailbox.html">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="login.html">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            
+            <li>
+                <a asp-page="/Dashboard"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
+            </li>
+            <li>
+                <a asp-page="/Category"><i class="fa fa-diamond"></i> <span class="nav-label">Category</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="graph_flot.html">Flot Charts</a></li>
+                    <li><a href="graph_morris.html">Morris.js Charts</a></li>
+                    <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
+                    <li><a href="graph_chartjs.html">Chart.js</a></li>
+                    <li><a href="graph_chartist.html">Chartist</a></li>
+                    <li><a href="c3.html">c3 charts</a></li>
+                    <li><a href="graph_peity.html">Peity Charts</a></li>
+                    <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
