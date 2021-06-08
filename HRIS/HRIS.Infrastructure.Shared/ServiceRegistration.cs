@@ -22,6 +22,7 @@ namespace HRIS.Infrastructure.Shared
             services.AddTransient<ISupplierService, SupplierService>();
             services.AddScoped<IVatService, VatService>();
             services.AddScoped<IVoucherService, VoucherService>();
+            services.AddScoped<IAssignMenuToUserService, AssignMenuToService>();
         }
     }
 }

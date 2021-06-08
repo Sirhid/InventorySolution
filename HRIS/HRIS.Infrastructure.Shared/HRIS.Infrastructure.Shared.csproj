@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HRIS.Application\HRIS.Application.csproj" />
+    <ProjectReference Include="..\HRIS.Infrastructure.Persistence\HRIS.Infrastructure.Persistence.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.90" />

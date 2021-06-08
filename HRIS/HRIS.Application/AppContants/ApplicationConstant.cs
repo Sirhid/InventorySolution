@@ -23,6 +23,7 @@
 
         public static string SP_vat = "SP_vat";
         public static string SP_Voucher = "SP_Voucher";
-        
+        public static string SP_AssignPermissionToUser = "SP_ProcessMenuToUsers";
+
     }
 }
