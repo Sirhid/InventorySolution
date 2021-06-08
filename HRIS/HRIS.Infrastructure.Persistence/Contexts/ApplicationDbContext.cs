@@ -32,6 +32,8 @@ namespace HRIS.Infrastructure.Persistence.Contexts
         public virtual DbSet<VAT> VAT { get; set; }
         public virtual DbSet<VendorReturn> VendorReturn { get; set; }
         public virtual DbSet<Voucher> Voucher { get; set; }
+        public virtual DbSet<MenuSetup> MenuSetup { get; set; }
+        public virtual DbSet<UsersRolePermission> UsersRolePermission { get; set; }
 
 
 
