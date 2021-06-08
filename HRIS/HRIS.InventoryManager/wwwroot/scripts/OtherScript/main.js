@@ -1,8 +1,6 @@
 ﻿function ShowMessagePopup(caption, message, type) {
     if (type) {
         swal({ title: caption, text: message, icon: type, closeOnClickOutside: false, closeOnEsc: false }
-
-
         );
     }
     else {

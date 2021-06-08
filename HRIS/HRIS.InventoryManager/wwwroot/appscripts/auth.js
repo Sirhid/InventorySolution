@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿
+$(document).ready(function () {
     var that = this;
     //domainName = document.querySelector("#domainNameId").value;
 
@@ -31,28 +32,24 @@
 
             return false;
         }
-        else if (isValidEmail == false) {
+        else if (isValidPassword == false) {
             $('#txtLoginPassword').css('border-color', 'Red');
             ($('#txtLoginPassword').focus());
             $('#btnLogin').removeAttr('disabled');
             ShowMessagePopup("Oops!", "Please ensure you fill the password field correctly", "warning");
-           
-            
+
+
             return false;
         }
-        $('#ibox1').children('.ibox-content').toggleClass('sk-loading');
-        return true;
+        else {
+            $('#ibox1').children('.ibox-content').toggleClass('sk-loading');
+            document.forms["SubmitLoginForm"].submit();
+        }
+       
     })
 
 
 
-    $('#btnRefreshPage').on('click', function () {
-        location.reload();
-    });
-
-
 
 });
-
-
 
