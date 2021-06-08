@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\scripts\application\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\HRIS.Infrastructure.Identity\HRIS.Infrastructure.Identity.csproj" />
     <ProjectReference Include="..\HRIS.Infrastructure.Persistence\HRIS.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\HRIS.Infrastructure.Shared\HRIS.Infrastructure.Shared.csproj" />
