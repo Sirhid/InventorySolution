@@ -29,5 +29,17 @@ namespace HRIS.Application.ApiResponseHelpers
             };
             return response;
         }
+        public static Response<string> AlreadyExistMessage(string message)
+        {
+            var response = new Response<string>
+            {
+                Data = message,
+                Message = message,
+                ResponseCode = "-1",
+                StatusCode = 409,
+                Succeeded = false,
+            };
+            return response;
+        }
     }
 }

@@ -29,6 +29,8 @@ namespace HRIS.Infrastructure.Persistence.Contexts
         public virtual DbSet<StorePurchase> StorePurchase { get; set; }
         public virtual DbSet<SubCategory> SubCategory { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<Sales> Sales { get; set; }
+        public virtual DbSet<StoreSetup> StoreSetup { get; set; }
         public virtual DbSet<VAT> VAT { get; set; }
         public virtual DbSet<VendorReturn> VendorReturn { get; set; }
         public virtual DbSet<Voucher> Voucher { get; set; }
@@ -44,11 +46,11 @@ namespace HRIS.Infrastructure.Persistence.Contexts
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.DateCreated = _dateTime.NowUtc;
+                        entry.Entity.CreatedOn = _dateTime.NowUtc;
                         entry.Entity.CreatedBy = _authenticatedUser.UserId;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.DateUpdated = _dateTime.NowUtc;
+                        entry.Entity.UpdatedOn = _dateTime.NowUtc;
                         entry.Entity.UpdatedBy = _authenticatedUser.UserId;
                         break;
                 }

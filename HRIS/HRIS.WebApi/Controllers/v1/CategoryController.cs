@@ -28,8 +28,11 @@ namespace HRIS.WebApi.Controllers.v1
             var response = _categoryService.CreateCategory(request);
             if (response > 0)
                 return Ok(ResponseHelper.SuccessMessage("Category was created successfully"));
-            return Ok(ResponseHelper.FailureMessage("Failure creating category"));
+            else if (response == 0)
+                return Ok(ResponseHelper.FailureMessage("Failure creating category"));
+            return Ok(ResponseHelper.AlreadyExistMessage("Category exists"));
         }
+
         [HttpPut]
         [ProducesResponseType(typeof(Response<string>), 200)]
         public IActionResult Put([FromBody] UpdateCategoryDTO request)

@@ -11,7 +11,7 @@ namespace HRIS.WebApi.Controllers.v1
 {
     [ApiVersion("1.0")]
     [Authorize]
-    public class SubCategoryController : ControllerBase
+    public class SubCategoryController : BaseApiController
     {
         private readonly ISubCategoryService _subCategoryService;
 
@@ -26,7 +26,9 @@ namespace HRIS.WebApi.Controllers.v1
             var response = _subCategoryService.CreateSubCategory(request);
             if (response > 0)
                 return Ok(ResponseHelper.SuccessMessage("Subcategory was created successfully"));
-            return Ok(ResponseHelper.FailureMessage("Failure creating subcategory"));
+            else if (response == 0)
+                return Ok(ResponseHelper.FailureMessage("Failure creating subcategory"));
+            return Ok(ResponseHelper.AlreadyExistMessage("Subcategory exists"));
         }
         [HttpPut]
         [ProducesResponseType(typeof(Response<string>), 200)]

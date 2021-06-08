@@ -2,6 +2,7 @@ using HRIS.Application;
 using HRIS.Application.Interfaces;
 using HRIS.Application.Interfaces.Repositories;
 using HRIS.Infrastructure.Identity;
+using HRIS.Infrastructure.Interfaces.Repositories;
 using HRIS.Infrastructure.Persistence;
 using HRIS.Infrastructure.Shared;
 using HRIS.Infrastructure.Shared.Services;
@@ -25,6 +26,10 @@ namespace HRIS.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IProductsRepository, ProductsRepository>();
+            services.AddTransient<IExpenditureRepository, ExpenditureRepository>();
+            services.AddTransient<IStoreSetupRepository, StoreSetupRepository>();
+            services.AddTransient<IMenuRepository, MenuRepository>();
             services.AddApplicationLayer();
             services.AddIdentityInfrastructure(_config);
             services.AddPersistenceInfrastructure(_config);

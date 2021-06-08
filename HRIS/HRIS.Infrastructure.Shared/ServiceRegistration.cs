@@ -16,6 +16,10 @@ namespace HRIS.Infrastructure.Shared
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ISubCategoryService, SubSubCategoryService>();
+            services.AddTransient<ICustomerVoucherService, CustomerVoucherService>();
+            services.AddTransient<IProductTypeVariationService, ProductTypeVariationService>();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ISupplierService, SupplierService>();
             services.AddScoped<IVatService, VatService>();
             services.AddScoped<IVoucherService, VoucherService>();
             services.AddScoped<IAssignMenuToUserService, AssignMenuToService>();

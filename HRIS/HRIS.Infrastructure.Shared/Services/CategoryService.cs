@@ -86,7 +86,7 @@ namespace HRIS.Infrastructure.Shared.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occured while updating a category");
+                _logger.LogError(ex, "Error occured while updating  category");
                 return null;
             }
         }
